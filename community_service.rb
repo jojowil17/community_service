@@ -15,28 +15,31 @@ hours_completed = row[5].to_f
 if row[6] == nil
 	row[6] = "01.01.1960"
 end	
+
 max_date = row[6].split(".")
 formatted_max_date = max_date[1].to_s + "-" + max_date[0].to_s + "-" + max_date[2].to_s
- puts formatted_max_date 
-todays_date = Date.parse("17/10/15")
+puts formatted_max_date 
+todays_date = Date.today
 days_remaining = Date.parse(formatted_max_date) - todays_date
 hours_remaining =  hours_given - hours_completed
- warning =  hours_remaining / days_remaining
 
-# days_left = days_remaining 
- # file_new = File.open('Community_service_scrubbed.csv', "w")
-
-
+def risk_factor(hours_remaining,days_remaining)
+hours_remaining.to_f / days_remaining.to_f
+end
 
 def hours_remaining(assigned,completed)
-	assigned.to_f - completed.to_f
+assigned.to_f - complete.to_f
+
 end
 
-def days_remaining(max_days,todays_date)
-	Date.parse(max_days) - Date.parse(todays_date)
+def days_remaining(max_days,today_date)
+max_days.to_f - today_date.to_f
+	 
 end
 
- file_new.puts row.to_csv.chomp + "," + hours_remaining.to_s + "," + warning.round(5).to_s 
+warning =  risk_factor(hours_remaining,days_remaining)
+
+ file_new.puts row.to_csv.chomp + "," + hours_remaining.to_s + "," + warning.round(3).to_s 
 
 end
 end

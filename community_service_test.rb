@@ -12,8 +12,16 @@ puts 'data'
 end
 
 def test_days_remaining
-assert_equal(-31,days_remaining("16/09/2015","17/10/2015"))
+assert_equal(-31,days_remaining("16.09.2015","17.10.2015"))
+assert_equal(26,days_remaining("12.11.2015", "17.10.2015"))
 end
+
+def test_for_risk_factor
+assert_equal(-2,risk_factor(4.0,-2.0))
+assert_equal(0.25,risk_factor(4.0,16.0))
+end
+
+
 
 end
 
